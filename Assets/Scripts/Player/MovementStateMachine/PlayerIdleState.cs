@@ -10,11 +10,10 @@ public class PlayerIdleState : BaseLocomotionState<LocomotionContextData>
     public override void Enter()
     {
         base.Enter();
-        Debug.Log("Player entered Idle State");
     }
+
     public override void Exit()
     {
-        Debug.Log("Player exited Idle State");
     }
 
     public override void OnLateUpdate()

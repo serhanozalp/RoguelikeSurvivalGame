@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -6,40 +7,31 @@ public abstract class BaseStatsManager
     protected BaseStatsData _statsData;
     protected BaseStatsData _runtimeStatsData;
 
-    protected readonly List<StatModifier> _statModifierList;
+    protected readonly List<BaseStatModifier> _statModifierList;
 
     public BaseStatsManager(string statsDataPath)
     {
         _statsData =  Resources.Load(statsDataPath) as BaseStatsData;
-        ResetRuntimeStatsData();
-        _statModifierList = new List<StatModifier>();
+        _statModifierList = new List<BaseStatModifier>();
+        BaseFloatStatModifier.Executed += OnFloatStatModifierExecuted;
     }
 
-    public void AddStatModifier(StatModifier statModifier)
+    public void AddStatModifier(BaseStatModifier statModifier)
     {
         _statModifierList.Add(statModifier);
+        statModifier.Execute();
     }
 
-    public BaseStatsData GetRuntimeStatsData(bool update)
+    private void OnFloatStatModifierExecuted(Type floatStatModifierType)
     {
-        if (update)
+        if(_statsData.TryGetStatByModifierType<float>(floatStatModifierType, out Stat<float> stat))
         {
-            ResetRuntimeStatsData();
-            UpdateRuntimeStatsData();
-        }
-        return _runtimeStatsData;
-    }
-
-    protected void UpdateRuntimeStatsData()
-    {
-        foreach (StatModifier statModifier in _statModifierList)
-        {
-            statModifier.Execute();
+            Debug.Log(stat.Value);
         }
     }
 
-    protected void ResetRuntimeStatsData()
+    ~BaseStatsManager()
     {
-        _runtimeStatsData = ScriptableObject.Instantiate(_statsData);
+        BaseFloatStatModifier.Executed -= OnFloatStatModifierExecuted;
     }
 }

@@ -6,7 +6,9 @@ public class SerializableType : ISerializationCallbackReceiver , IReset
 {
     [SerializeField] 
     private string _assemblyQualifiedName = string.Empty;
+
     private Type _type;
+    public Type Type { get { return _type; } }
 
     public void OnAfterDeserialize()
     {

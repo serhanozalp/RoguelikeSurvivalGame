@@ -15,14 +15,12 @@ MonoBehaviour:
   Armor:
     Name: Armor
     Value: 10
-    IsDirty: 0
-    type:
-      _assemblyQualifiedName: StatModifier, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
-        PublicKeyToken=null
+    StatModifierType:
+      _assemblyQualifiedName: ArmorStatModifier, Assembly-CSharp, Version=0.0.0.0,
+        Culture=neutral, PublicKeyToken=null
   Speed:
     Name: Speed
-    Value: 10
-    IsDirty: 0
-    type:
-      _assemblyQualifiedName: StatModifier, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
-        PublicKeyToken=null
+    Value: 5
+    StatModifierType:
+      _assemblyQualifiedName: SpeedStatModifier, Assembly-CSharp, Version=0.0.0.0,
+        Culture=neutral, PublicKeyToken=null

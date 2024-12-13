@@ -10,12 +10,10 @@ public class PlayerMoveForwardState : BaseLocomotionState<LocomotionContextData>
     public override void Enter()
     {
         base.Enter();
-        Debug.Log("Player entered MoveForward State");
     }
 
     public override void Exit()
     {
-        Debug.Log("Player exited MoveForward State");
     }
 
     public override void OnLateUpdate()

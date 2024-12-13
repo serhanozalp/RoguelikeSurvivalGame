@@ -10,12 +10,10 @@ public class PlayerStrafeState : BaseLocomotionState<LocomotionContextData>
     public override void Enter()
     {
         base.Enter();
-        Debug.Log("Player entered Strafe State");
     }
 
     public override void Exit()
     {
-        Debug.Log("Player exited Strafe State");
     }
 
     public override void OnLateUpdate()
