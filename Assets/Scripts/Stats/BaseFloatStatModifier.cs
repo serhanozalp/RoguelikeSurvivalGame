@@ -6,13 +6,11 @@ public enum StatCalculationType
     Multiplicative,
 }
 
-public abstract class BaseFloatStatModifier : BaseStatModifier
+public abstract class BaseFloatStatModifier : StatModifier
 {
     private StatCalculationType _statCalculationType;
     private float _value;
-
     public static Action<Type> Executed;
-
 
     public BaseFloatStatModifier(Action onExecute, float value, StatCalculationType statCalculationType) : base(onExecute)
     {

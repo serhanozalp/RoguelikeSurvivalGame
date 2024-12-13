@@ -7,16 +7,17 @@ public abstract class BaseStatsManager
     protected BaseStatsData _statsData;
     protected BaseStatsData _runtimeStatsData;
 
-    protected readonly List<BaseStatModifier> _statModifierList;
+    protected readonly List<StatModifier> _statModifierList;
 
     public BaseStatsManager(string statsDataPath)
     {
         _statsData =  Resources.Load(statsDataPath) as BaseStatsData;
-        _statModifierList = new List<BaseStatModifier>();
+        _runtimeStatsData = ScriptableObject.Instantiate(_statsData);
+        _statModifierList = new List<StatModifier>();
         BaseFloatStatModifier.Executed += OnFloatStatModifierExecuted;
     }
 
-    public void AddStatModifier(BaseStatModifier statModifier)
+    public void AddStatModifier(StatModifier statModifier)
     {
         _statModifierList.Add(statModifier);
         statModifier.Execute();
@@ -24,7 +25,7 @@ public abstract class BaseStatsManager
 
     private void OnFloatStatModifierExecuted(Type floatStatModifierType)
     {
-        if(_statsData.TryGetStatByModifierType<float>(floatStatModifierType, out Stat<float> stat))
+        if(_runtimeStatsData.TryGetStatByModifierType<float>(floatStatModifierType, out Stat<float> stat))
         {
             Debug.Log(stat.Value);
         }

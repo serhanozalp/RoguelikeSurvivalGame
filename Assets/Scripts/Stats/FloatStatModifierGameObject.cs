@@ -19,7 +19,7 @@ public class FloatStatModifierGameObject : MonoBehaviour, IPickup
     public void Pickup(IEntity entity)
     {
         _entityStatsManager = (entity as ICombatEntity).CombatEntityStatsManager;
-        _entityStatsManager.AddStatModifier((BaseStatModifier)Activator.CreateInstance(_statModifierType.Type, null, _value, _statCalculationType));
+        _entityStatsManager.AddStatModifier((StatModifier)Activator.CreateInstance(_statModifierType.Type, null, _value, _statCalculationType));
         Destroy(this.gameObject);
     }
     

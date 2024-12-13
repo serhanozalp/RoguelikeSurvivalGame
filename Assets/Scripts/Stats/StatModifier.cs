@@ -1,10 +1,10 @@
 using System;
 
-public abstract class BaseStatModifier : ICommand
+public class StatModifier : ICommand
 {
     private Action _onExecute;
 
-    public BaseStatModifier(Action onExecute)
+    public StatModifier(Action onExecute)
     {
         _onExecute = onExecute;
     }

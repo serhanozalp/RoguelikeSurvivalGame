@@ -11,15 +11,15 @@ public class Stat<T>
     public string Name;
     public T Value;
 
-    [SerializeField, TypeFilter(typeof(BaseStatModifier))]
+    [SerializeField, TypeFilter(typeof(StatModifier))]
     public SerializableType StatModifierType;
 }
 
 public abstract class BaseStatsData : ScriptableObject
-{   
+{
+    public Stat<int> MaxNumberOfWeapons;
     public Stat<float> Armor;
     public Stat<float> Speed;
-
 
     public bool TryGetStatByModifierType<T>(Type statModifierType, out Stat<T> stat)
     {
@@ -27,6 +27,7 @@ public abstract class BaseStatsData : ScriptableObject
         stat = null;
         foreach (FieldInfo field in fields)
         {
+            if (!Type.Equals(field.FieldType, typeof(Stat<T>))) continue;
             stat = (Stat<T>)field.GetValue(this);
             if (Type.Equals(stat.StatModifierType.Type, statModifierType)) return true;
         }

@@ -12,6 +12,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b505f9bbddb0c0441bafc56e44a5b2aa, type: 3}
   m_Name: PlayerStatsData
   m_EditorClassIdentifier: 
+  MaxNumberOfWeapons:
+    Name: Max Weapons
+    Value: 3
+    StatModifierType:
+      _assemblyQualifiedName: StatModifier, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
+        PublicKeyToken=null
   Armor:
     Name: Armor
     Value: 10
