@@ -22,5 +22,4 @@ public class FloatStatModifierGameObject : MonoBehaviour, IPickup
         _entityStatsManager.AddStatModifier((StatModifier)Activator.CreateInstance(_statModifierType.Type, null, _value, _statCalculationType));
         Destroy(this.gameObject);
     }
-    
 }

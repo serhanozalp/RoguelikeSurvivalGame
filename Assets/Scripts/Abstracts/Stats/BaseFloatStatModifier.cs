@@ -6,10 +6,12 @@ public enum StatCalculationType
     Multiplicative,
 }
 
-public abstract class BaseFloatStatModifier : StatModifier
+public abstract class BaseFloatStatModifier : StatModifier , IComparable<BaseFloatStatModifier>
 {
     private StatCalculationType _statCalculationType;
+    public StatCalculationType StatCalculationType { get { return _statCalculationType; } }
     private float _value;
+    public float Value { get { return _value; } }
     public static Action<Type> Executed;
 
     public BaseFloatStatModifier(Action onExecute, float value, StatCalculationType statCalculationType) : base(onExecute)
@@ -22,5 +24,10 @@ public abstract class BaseFloatStatModifier : StatModifier
     {
         base.Execute();
         Executed?.Invoke(this.GetType());
+    }
+
+    public int CompareTo(BaseFloatStatModifier other)
+    {
+        return _statCalculationType.CompareTo(other.StatCalculationType);
     }
 }
