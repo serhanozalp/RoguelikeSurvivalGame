@@ -1,9 +1,12 @@
 using UnityEngine.PlayerLoop;
 using UnityEngine.LowLevel;
 using UnityEngine;
+using System.Collections.Generic;
 
 public static class TimerSystem
 {
+    private static readonly List<Timer> _timerList = new List<Timer>();
+
     [RuntimeInitializeOnLoadMethod(RuntimeInitializeLoadType.BeforeSceneLoad)]
     private static void Initialize()
     {
@@ -20,7 +23,17 @@ public static class TimerSystem
         }
     }
 
+    public static void RegisterTimer(Timer timer)
+    {
+        if (!_timerList.Contains(timer)) _timerList.Add(timer);
+    }
+
+    public static void UnRegisterTimer(Timer timer) => _timerList.Remove(timer);
     private static void UpdateTimers()
     {
+        for (int i = 0; i < _timerList.Count; i++)
+        {
+            _timerList[i]?.Tick();
+        }
     }
 }

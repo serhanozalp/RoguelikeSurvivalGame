@@ -15,19 +15,24 @@ public abstract class BaseStatsManager
         _statsData =  Resources.Load(statsDataPath) as BaseStatsData;
         _runtimeStatsData = ScriptableObject.Instantiate(_statsData);
         _statModifierList = new List<StatModifier>();
-        BaseFloatStatModifier.Executed += OnFloatStatModifierExecuted;
+        BaseFloatStatModifier.FloatStatModified += OnFloatStatModified;
+        StatModifier.StatModifierUndid += OnStatModifierUndid;
     }
 
     public void AddStatModifier(StatModifier statModifier)
     {
-        _statModifierList.Add(statModifier);
-        statModifier.Execute();
+        if (!_statModifierList.Contains(statModifier))
+        {
+            _statModifierList.Add(statModifier);
+            statModifier.Execute();
+        }
     }
 
-    private void OnFloatStatModifierExecuted(Type floatStatModifierType)
-    {
-        RecalculateFloatStat(floatStatModifierType);
-    }
+    private void RemoveStatModifier(StatModifier statModifier) => _statModifierList.Remove(statModifier);
+
+    private void OnStatModifierUndid(StatModifier statModifier) => RemoveStatModifier(statModifier);
+
+    private void OnFloatStatModified(Type floatStatModifierType) => RecalculateFloatStat(floatStatModifierType);
 
     private void RecalculateFloatStat(Type floatStatModifierType)
     {
@@ -48,11 +53,12 @@ public abstract class BaseStatsManager
                         break;
                 }
             }
+            Debug.Log($"{runtimeStat.Name} : {runtimeStat.Value}");
         }
     }
 
     ~BaseStatsManager()
     {
-        BaseFloatStatModifier.Executed -= OnFloatStatModifierExecuted;
+        BaseFloatStatModifier.FloatStatModified -= OnFloatStatModified;
     }
 }

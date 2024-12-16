@@ -1,16 +1,34 @@
 using System;
 
-public class StatModifier : ICommand
+public class StatModifier : ICommandWithUndo
 {
-    private Action _onExecute;
+    public Action OnStatModifierExecute;
+    public Action OnStatModifierUndo;
+    public static Action<StatModifier> StatModifierUndid;
+    private CountdownTimer _modifierTimer;
 
-    public StatModifier(Action onExecute)
+    public StatModifier(Action onExecute, Action onUndo, float timerInitialValue = 0)
     {
-        _onExecute = onExecute;
+        OnStatModifierExecute = onExecute;
+        OnStatModifierUndo = onUndo;
+        if(timerInitialValue > 0f) _modifierTimer = new CountdownTimer(timerInitialValue);
     }
 
     public virtual void Execute()
     {
-        _onExecute?.Invoke();
+        if(_modifierTimer != null)
+        {
+            _modifierTimer.TimerStoped += OnTimerStopped;
+            _modifierTimer.Start();
+        }
+        OnStatModifierExecute?.Invoke();
     }
+
+    public virtual void Undo()
+    {
+        OnStatModifierUndo?.Invoke();
+        StatModifierUndid.Invoke(this);
+    }
+
+    private void OnTimerStopped() => Undo();
 }

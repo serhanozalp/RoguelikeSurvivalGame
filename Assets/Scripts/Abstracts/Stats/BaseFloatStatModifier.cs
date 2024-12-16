@@ -12,9 +12,9 @@ public abstract class BaseFloatStatModifier : StatModifier , IComparable<BaseFlo
     public StatCalculationType StatCalculationType { get { return _statCalculationType; } }
     private float _value;
     public float Value { get { return _value; } }
-    public static Action<Type> Executed;
+    public static Action<Type> FloatStatModified;
 
-    public BaseFloatStatModifier(Action onExecute, float value, StatCalculationType statCalculationType) : base(onExecute)
+    public BaseFloatStatModifier(float value, StatCalculationType statCalculationType, Action onExecute = null, Action onUndo = null,  float timerInitialValue = 0) : base(onExecute, onUndo, timerInitialValue)
     {
         _value = value;
         _statCalculationType = statCalculationType;
@@ -23,11 +23,14 @@ public abstract class BaseFloatStatModifier : StatModifier , IComparable<BaseFlo
     public override void Execute()
     {
         base.Execute();
-        Executed?.Invoke(this.GetType());
+        FloatStatModified?.Invoke(this.GetType());
     }
 
-    public int CompareTo(BaseFloatStatModifier other)
+    public override void Undo()
     {
-        return _statCalculationType.CompareTo(other.StatCalculationType);
+        base.Undo();
+        FloatStatModified?.Invoke(this.GetType());
     }
+
+    public int CompareTo(BaseFloatStatModifier other) => _statCalculationType.CompareTo(other.StatCalculationType);
 }

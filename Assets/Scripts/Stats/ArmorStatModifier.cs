@@ -2,7 +2,7 @@ using System;
 
 public class ArmorStatModifier : BaseFloatStatModifier
 {
-    public ArmorStatModifier(Action onExecute, float value, StatCalculationType statCalculationType) : base(onExecute, value, statCalculationType)
+    public ArmorStatModifier(float value, StatCalculationType statCalculationType, Action onExecute = null, Action onUndo = null, float timerInitialValue = 0) : base(value, statCalculationType, onExecute, onUndo, timerInitialValue)
     {
     }
 }
