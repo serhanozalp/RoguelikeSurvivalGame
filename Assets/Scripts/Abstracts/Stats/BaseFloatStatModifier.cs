@@ -6,13 +6,15 @@ public enum StatCalculationType
     Multiplicative,
 }
 
-public abstract class BaseFloatStatModifier : StatModifier , IComparable<BaseFloatStatModifier>
+public abstract class BaseFloatStatModifier : EntityModifier , IComparable<BaseFloatStatModifier>
 {
     private StatCalculationType _statCalculationType;
     public StatCalculationType StatCalculationType { get { return _statCalculationType; } }
+
     private float _value;
     public float Value { get { return _value; } }
-    public static Action<Type> FloatStatModified;
+
+    public Action<Type> FloatStatModified;
 
     public BaseFloatStatModifier(float value, StatCalculationType statCalculationType, Action onExecute = null, Action onUndo = null,  float timerInitialValue = 0) : base(onExecute, onUndo, timerInitialValue)
     {

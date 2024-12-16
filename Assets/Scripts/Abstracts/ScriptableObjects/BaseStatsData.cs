@@ -11,13 +11,12 @@ public class Stat<T>
     public string Name;
     public T Value;
 
-    [SerializeField, TypeFilter(typeof(StatModifier))]
+    [SerializeField, TypeFilter(typeof(EntityModifier))]
     public SerializableType StatModifierType;
 }
 
 public abstract class BaseStatsData : ScriptableObject
 {
-    public Stat<int> MaxNumberOfWeapons;
     public Stat<float> Armor;
     public Stat<float> Speed;
 
@@ -34,4 +33,3 @@ public abstract class BaseStatsData : ScriptableObject
         return false;
     }
 }
-

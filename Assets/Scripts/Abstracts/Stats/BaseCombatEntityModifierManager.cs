@@ -3,34 +3,28 @@ using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
 
-public abstract class BaseStatsManager
+public abstract class BaseCombatEntityModifierManager : BaseEntityModifierManager
 {
     protected BaseStatsData _statsData;
     protected BaseStatsData _runtimeStatsData;
 
-    protected readonly List<StatModifier> _statModifierList;
-
-    public BaseStatsManager(string statsDataPath)
+    public BaseCombatEntityModifierManager(string statsDataPath) : base()
     {
-        _statsData =  Resources.Load(statsDataPath) as BaseStatsData;
+        _statsData = Resources.Load(statsDataPath) as BaseStatsData;
         _runtimeStatsData = ScriptableObject.Instantiate(_statsData);
-        _statModifierList = new List<StatModifier>();
-        BaseFloatStatModifier.FloatStatModified += OnFloatStatModified;
-        StatModifier.StatModifierUndid += OnStatModifierUndid;
     }
 
-    public void AddStatModifier(StatModifier statModifier)
+    public override void AddModifier(EntityModifier modifier)
     {
-        if (!_statModifierList.Contains(statModifier))
-        {
-            _statModifierList.Add(statModifier);
-            statModifier.Execute();
-        }
+        if (typeof(BaseFloatStatModifier).IsAssignableFrom(modifier.GetType())) (modifier as BaseFloatStatModifier).FloatStatModified += OnFloatStatModified;
+        base.AddModifier(modifier);
     }
 
-    private void RemoveStatModifier(StatModifier statModifier) => _statModifierList.Remove(statModifier);
-
-    private void OnStatModifierUndid(StatModifier statModifier) => RemoveStatModifier(statModifier);
+    public override void RemoveModifier(EntityModifier modifier)
+    {
+        base.RemoveModifier(modifier);
+        if (typeof(BaseFloatStatModifier).IsAssignableFrom(modifier.GetType())) (modifier as BaseFloatStatModifier).FloatStatModified -= OnFloatStatModified;
+    }
 
     private void OnFloatStatModified(Type floatStatModifierType) => RecalculateFloatStat(floatStatModifierType);
 
@@ -39,11 +33,11 @@ public abstract class BaseStatsManager
         if (_statsData.TryGetStatByModifierType<float>(floatStatModifierType, out Stat<float> stat) && _runtimeStatsData.TryGetStatByModifierType<float>(floatStatModifierType, out Stat<float> runtimeStat))
         {
             runtimeStat.Value = stat.Value;
-            List<BaseFloatStatModifier> filteredList = _statModifierList.Where(t => Type.Equals(t.GetType(), floatStatModifierType)).Cast<BaseFloatStatModifier>().ToList();
+            List<BaseFloatStatModifier> filteredList = _modifierList.Where(t => Type.Equals(t.GetType(), floatStatModifierType)).Cast<BaseFloatStatModifier>().ToList();
             filteredList.Sort();
             foreach (BaseFloatStatModifier modifier in filteredList)
             {
-                switch(modifier.StatCalculationType)
+                switch (modifier.StatCalculationType)
                 {
                     case StatCalculationType.Additive:
                         runtimeStat.Value += modifier.Value;
@@ -55,10 +49,5 @@ public abstract class BaseStatsManager
             }
             Debug.Log($"{runtimeStat.Name} : {runtimeStat.Value}");
         }
-    }
-
-    ~BaseStatsManager()
-    {
-        BaseFloatStatModifier.FloatStatModified -= OnFloatStatModified;
     }
 }

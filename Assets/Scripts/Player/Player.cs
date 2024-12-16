@@ -1,23 +1,22 @@
 using UnityEngine;
 
 [RequireComponent(typeof(PlayerAnimation), typeof(PlayerMovement))]
-public class Player : MonoBehaviour , ICombatEntity
+public class Player : MonoBehaviour , IEntity
 {
     private PlayerAnimation _playerAnimation;
     private PlayerMovement _playerMovement;
 
     private PlayerLocomotionStateMachine _playerLocomotionStateMachine;
 
-    private BaseStatsManager _playerStatsManager;
-
-    public BaseStatsManager CombatEntityStatsManager => _playerStatsManager;
+    private BaseEntityModifierManager _playerEntityModifierManager;
+    public BaseEntityModifierManager EntityModifierManager => _playerEntityModifierManager;
 
     private void Awake()
     {
         _playerAnimation = GetComponent<PlayerAnimation>();
         _playerMovement = GetComponent<PlayerMovement>();
         _playerLocomotionStateMachine = new PlayerLocomotionStateMachine(null, new LocomotionContextData { PlayerAnimation = _playerAnimation, PlayerMovement = _playerMovement, PlayerTransform = transform });
-        _playerStatsManager = new PlayerStatsManager("StatsData/Player/PlayerStatsData");
+        _playerEntityModifierManager = new PlayerEntityModifierManager("StatsData/Player/PlayerStatsData");
     }
 
     private void Update()

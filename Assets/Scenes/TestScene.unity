@@ -242,7 +242,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _value: 5
   _statCalculationType: 0
-  _statModifierType:
+  _timerInitialValue: 3
+  _floatStatModifierType:
     _assemblyQualifiedName: ArmorStatModifier, Assembly-CSharp, Version=0.0.0.0,
       Culture=neutral, PublicKeyToken=null
 --- !u!1 &231521743
@@ -279,7 +280,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _value: 2
   _statCalculationType: 1
-  _statModifierType:
+  _timerInitialValue: 3
+  _floatStatModifierType:
     _assemblyQualifiedName: SpeedStatModifier, Assembly-CSharp, Version=0.0.0.0,
       Culture=neutral, PublicKeyToken=null
 --- !u!65 &231521745
@@ -998,7 +1000,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _value: 10
   _statCalculationType: 1
-  _statModifierType:
+  _timerInitialValue: 1
+  _floatStatModifierType:
     _assemblyQualifiedName: ArmorStatModifier, Assembly-CSharp, Version=0.0.0.0,
       Culture=neutral, PublicKeyToken=null
 --- !u!135 &1686026157
@@ -1201,7 +1204,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _value: 7
   _statCalculationType: 0
-  _statModifierType:
+  _timerInitialValue: 3
+  _floatStatModifierType:
     _assemblyQualifiedName: ArmorStatModifier, Assembly-CSharp, Version=0.0.0.0,
       Culture=neutral, PublicKeyToken=null
 --- !u!135 &2068170053

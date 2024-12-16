@@ -9,17 +9,17 @@ public class FloatStatModifierGameObject : MonoBehaviour, IPickup
     private float _value;
 
     [SerializeField]
-    StatCalculationType _statCalculationType;
+    private StatCalculationType _statCalculationType;
+
+    [SerializeField]
+    private float _timerInitialValue;
 
     [SerializeField, TypeFilter(typeof(BaseFloatStatModifier))]
-    private SerializableType _statModifierType;
-
-    private BaseStatsManager _entityStatsManager;
+    private SerializableType _floatStatModifierType;
 
     public void Pickup(IEntity entity)
     {
-        _entityStatsManager = (entity as ICombatEntity).CombatEntityStatsManager;
-        _entityStatsManager.AddStatModifier((StatModifier)Activator.CreateInstance(_statModifierType.Type, new object[] {_value, _statCalculationType, null, null, 3}));
+        entity.EntityModifierManager.AddModifier((EntityModifier)Activator.CreateInstance(_floatStatModifierType.Type, new object[] {_value, _statCalculationType, null, null, _timerInitialValue}));
         Destroy(this.gameObject);
     }
 }
