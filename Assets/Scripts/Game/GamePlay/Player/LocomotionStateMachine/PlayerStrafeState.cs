@@ -1,28 +1,8 @@
-using UnityEngine;
-
-public class PlayerStrafeState : BaseLocomotionState<LocomotionContextData>
+public class PlayerStrafeState : BaseLocomotionState<PlayerLocomotionContextData>
 {
-    public PlayerStrafeState(BaseState<LocomotionContextData> parentState, LocomotionContextData contextData) : base(parentState, contextData)
+    public PlayerStrafeState(BaseState<PlayerLocomotionContextData> parentState, PlayerLocomotionContextData contextData) : base(parentState, contextData)
     {
         _moveSpeed = 3f;
-    }
-
-    public override void Enter()
-    {
-        base.Enter();
-    }
-
-    public override void Exit()
-    {
-    }
-
-    public override void OnLateUpdate()
-    {
-    }
-
-    public override void OnUpdate()
-    {
-
     }
 
     protected override void SetMovementSpeed()

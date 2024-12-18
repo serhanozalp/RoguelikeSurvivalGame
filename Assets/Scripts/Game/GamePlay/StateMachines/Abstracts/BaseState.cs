@@ -19,9 +19,9 @@ public abstract class BaseState<T> where T : class
         HandleAnimations();
     }
 
-    public abstract void OnUpdate();
-    public abstract void OnLateUpdate();
-    public abstract void Exit();
+    public virtual void OnUpdate() { }
+
+    public virtual  void Exit() { }
 
     protected virtual void HandleAnimations() { }
 }

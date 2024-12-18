@@ -1,22 +1,22 @@
 using UnityEngine;
 
-public class LocomotionContextData
+public class PlayerLocomotionContextData
 {
     public PlayerAnimation PlayerAnimation;
     public PlayerMovement PlayerMovement;
     public Transform PlayerTransform;
 }
 
-public class PlayerLocomotionStateMachine : BaseStateMachine<LocomotionContextData>
+public class PlayerLocomotionStateMachine : BaseStateMachine<PlayerLocomotionContextData>
 {
-    private BaseState<LocomotionContextData> _idleState;
-    private BaseState<LocomotionContextData> _strafeState;
-    private BaseState<LocomotionContextData> _moveForwardState;
-    private BaseState<LocomotionContextData> _moveBackwardState;
+    private BaseState<PlayerLocomotionContextData> _idleState;
+    private BaseState<PlayerLocomotionContextData> _strafeState;
+    private BaseState<PlayerLocomotionContextData> _moveForwardState;
+    private BaseState<PlayerLocomotionContextData> _moveBackwardState;
 
     private Vector2 _locomotionBlendTreePoint;
 
-    public PlayerLocomotionStateMachine(BaseState<LocomotionContextData> parentState, LocomotionContextData contextData) : base(parentState, contextData)
+    public PlayerLocomotionStateMachine(BaseState<PlayerLocomotionContextData> parentState, PlayerLocomotionContextData contextData) : base(parentState, contextData)
     {
         _idleState = new PlayerIdleState(this, _contextData);
         _strafeState = new PlayerStrafeState(this, _contextData);
@@ -25,30 +25,15 @@ public class PlayerLocomotionStateMachine : BaseStateMachine<LocomotionContextDa
         ChangeState(_idleState);
     }
 
-    public override void Enter()
-    {
-        base.Enter();
-        Debug.Log("Player entered Locomotion StateMachine");
-    }
-
-    public override void Exit()
-    {
-        Debug.Log("Player exited Locomotion StateMachine");
-    }
-
     public override void OnUpdate()
     {
-        _locomotionBlendTreePoint = new Vector2(Vector3.Dot(_contextData.PlayerTransform.right, _contextData.PlayerMovement.MoveDirection), Vector3.Dot(_contextData.PlayerTransform.forward, _contextData.PlayerMovement.MoveDirection));
-        base.OnUpdate();
-    }
-    public override void OnLateUpdate()
-    {
-        base.OnLateUpdate();
         HandleAnimations();
+        base.OnUpdate();
     }
 
     protected override void HandleAnimations()
     {
+        _locomotionBlendTreePoint = new Vector2(Vector3.Dot(_contextData.PlayerTransform.right, _contextData.PlayerMovement.MoveDirection), Vector3.Dot(_contextData.PlayerTransform.forward, _contextData.PlayerMovement.MoveDirection));
         _contextData.PlayerAnimation.SetLocomotionAnimationValues(_locomotionBlendTreePoint.x, _locomotionBlendTreePoint.y);
     }
 

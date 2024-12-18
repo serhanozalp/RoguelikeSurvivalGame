@@ -20,10 +20,5 @@ public abstract class BaseStateMachine<T> : BaseState<T> where T : class
         _currentState?.OnUpdate();
     }
 
-    public override void OnLateUpdate()
-    {
-        _currentState?.OnLateUpdate();
-    }
-
     protected abstract void StateTransitionLogic();
 }
