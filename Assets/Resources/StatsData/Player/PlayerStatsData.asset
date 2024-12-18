@@ -16,11 +16,11 @@ MonoBehaviour:
     Name: Armor
     Value: 10
     StatModifierType:
-      _assemblyQualifiedName: ArmorStatModifier, Assembly-CSharp, Version=0.0.0.0,
+      _assemblyQualifiedName: ArmorStatModifier, Game.GamePlay.StatSystem, Version=0.0.0.0,
         Culture=neutral, PublicKeyToken=null
   Speed:
     Name: Speed
     Value: 5
     StatModifierType:
-      _assemblyQualifiedName: SpeedStatModifier, Assembly-CSharp, Version=0.0.0.0,
+      _assemblyQualifiedName: SpeedStatModifier, Game.GamePlay.StatSystem, Version=0.0.0.0,
         Culture=neutral, PublicKeyToken=null

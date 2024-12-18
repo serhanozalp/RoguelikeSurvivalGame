@@ -1,0 +1,19 @@
+{
+    "name": "Game.GamePlay.StatSystem",
+    "rootNamespace": "",
+    "references": [
+        "GUID:c4bca0c1802911642a2a1062ff224504",
+        "GUID:2491a6f50cb4eaf488493e42664850ee",
+        "GUID:5d7805272e5a5a642b1101b30a8d3e9a",
+        "GUID:68b0f54fa9e1bb249b65a9f915b12d25"
+    ],
+    "includePlatforms": [],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false,
+    "overrideReferences": false,
+    "precompiledReferences": [],
+    "autoReferenced": true,
+    "defineConstraints": [],
+    "versionDefines": [],
+    "noEngineReferences": false
+}

@@ -1,0 +1,16 @@
+{
+    "name": "Core.TimerSystem",
+    "rootNamespace": "",
+    "references": [
+        "GUID:1ef12b022188a9742b2ae402edbd89c7"
+    ],
+    "includePlatforms": [],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false,
+    "overrideReferences": false,
+    "precompiledReferences": [],
+    "autoReferenced": true,
+    "defineConstraints": [],
+    "versionDefines": [],
+    "noEngineReferences": false
+}

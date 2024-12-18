@@ -244,7 +244,7 @@ MonoBehaviour:
   _statCalculationType: 0
   _timerInitialValue: 3
   _floatStatModifierType:
-    _assemblyQualifiedName: ArmorStatModifier, Assembly-CSharp, Version=0.0.0.0,
+    _assemblyQualifiedName: ArmorStatModifier, Game.GamePlay.StatSystem, Version=0.0.0.0,
       Culture=neutral, PublicKeyToken=null
 --- !u!1 &231521743
 GameObject:
@@ -282,7 +282,7 @@ MonoBehaviour:
   _statCalculationType: 1
   _timerInitialValue: 3
   _floatStatModifierType:
-    _assemblyQualifiedName: SpeedStatModifier, Assembly-CSharp, Version=0.0.0.0,
+    _assemblyQualifiedName: SpeedStatModifier, Game.GamePlay.StatSystem, Version=0.0.0.0,
       Culture=neutral, PublicKeyToken=null
 --- !u!65 &231521745
 BoxCollider:
@@ -1002,7 +1002,7 @@ MonoBehaviour:
   _statCalculationType: 1
   _timerInitialValue: 1
   _floatStatModifierType:
-    _assemblyQualifiedName: ArmorStatModifier, Assembly-CSharp, Version=0.0.0.0,
+    _assemblyQualifiedName: ArmorStatModifier, Game.GamePlay.StatSystem, Version=0.0.0.0,
       Culture=neutral, PublicKeyToken=null
 --- !u!135 &1686026157
 SphereCollider:
@@ -1206,7 +1206,7 @@ MonoBehaviour:
   _statCalculationType: 0
   _timerInitialValue: 3
   _floatStatModifierType:
-    _assemblyQualifiedName: ArmorStatModifier, Assembly-CSharp, Version=0.0.0.0,
+    _assemblyQualifiedName: ArmorStatModifier, Game.GamePlay.StatSystem, Version=0.0.0.0,
       Culture=neutral, PublicKeyToken=null
 --- !u!135 &2068170053
 SphereCollider:

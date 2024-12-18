@@ -1,6 +1,5 @@
 using System;
 using UnityEngine;
-using Infrastructure.PropertyAttributes;
 using System.Linq;
 using System.Collections.Generic;
 using System.Reflection;

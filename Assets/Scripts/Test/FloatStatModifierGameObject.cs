@@ -1,4 +1,3 @@
-using Infrastructure.PropertyAttributes;
 using System;
 using UnityEngine;
 

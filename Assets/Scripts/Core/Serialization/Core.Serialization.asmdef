@@ -1,0 +1,16 @@
+{
+    "name": "Core.Serialization",
+    "rootNamespace": "",
+    "references": [
+        "GUID:2491a6f50cb4eaf488493e42664850ee"
+    ],
+    "includePlatforms": [],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false,
+    "overrideReferences": false,
+    "precompiledReferences": [],
+    "autoReferenced": true,
+    "defineConstraints": [],
+    "versionDefines": [],
+    "noEngineReferences": false
+}

@@ -1,0 +1,16 @@
+{
+    "name": "Game.Managers",
+    "rootNamespace": "",
+    "references": [
+        "GUID:a50ebfd12178c2f47abcaf0e6343eff0"
+    ],
+    "includePlatforms": [],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false,
+    "overrideReferences": false,
+    "precompiledReferences": [],
+    "autoReferenced": true,
+    "defineConstraints": [],
+    "versionDefines": [],
+    "noEngineReferences": false
+}
