@@ -1,4 +1,5 @@
 using UnityEngine;
+using Zenject;
 
 [RequireComponent(typeof(PlayerAnimation), typeof(PlayerMovement))]
 public class Player : MonoBehaviour , IEntity
@@ -11,12 +12,17 @@ public class Player : MonoBehaviour , IEntity
     private BaseEntityModifierManager _playerEntityModifierManager;
     public BaseEntityModifierManager EntityModifierManager => _playerEntityModifierManager;
 
+    [Inject]
+    private void ZenjectConstructor(BaseEntityModifierManager entityModifierManager)
+    {
+        _playerEntityModifierManager = entityModifierManager;
+    }
+
     private void Awake()
     {
         _playerAnimation = GetComponent<PlayerAnimation>();
         _playerMovement = GetComponent<PlayerMovement>();
         _playerLocomotionStateMachine = new PlayerLocomotionStateMachine(null, new PlayerLocomotionContextData { PlayerAnimation = _playerAnimation, PlayerMovement = _playerMovement, PlayerTransform = transform });
-        _playerEntityModifierManager = new PlayerEntityModifierManager("StatsData/Player/PlayerStatsData");
     }
 
     private void Update()

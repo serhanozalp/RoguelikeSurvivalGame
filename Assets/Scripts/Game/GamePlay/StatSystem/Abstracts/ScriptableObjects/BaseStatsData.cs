@@ -17,7 +17,7 @@ public class Stat<T>
 public abstract class BaseStatsData : ScriptableObject
 {
     public Stat<float> Armor;
-    public Stat<float> Speed;
+    public Stat<float> SpeedModifier;
 
     public bool TryGetStatByModifierType<T>(Type statModifierType, out Stat<T> stat)
     {

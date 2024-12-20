@@ -2,16 +2,17 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
+using Zenject;
 
 public abstract class BaseCombatEntityModifierManager : BaseEntityModifierManager
 {
     protected BaseStatsData _statsData;
     protected BaseStatsData _runtimeStatsData;
 
-    public BaseCombatEntityModifierManager(string statsDataPath) : base()
+    public BaseCombatEntityModifierManager([Inject(Id = "Base")] BaseStatsData statsData, [Inject(Id = "Runtime")] BaseStatsData runtimeStatsData) : base()
     {
-        _statsData = Resources.Load(statsDataPath) as BaseStatsData;
-        _runtimeStatsData = ScriptableObject.Instantiate(_statsData);
+        _statsData = statsData;
+        _runtimeStatsData = runtimeStatsData;
     }
 
     public override void AddModifier(EntityModifier modifier)
