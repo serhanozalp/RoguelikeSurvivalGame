@@ -1,3 +1,16 @@
 {
-	"name": "Game.GamePlay.StateMachines"
+    "name": "Game.GamePlay.StateMachines",
+    "rootNamespace": "",
+    "references": [
+        "GUID:9d83cd834658db54ca649f3943865520"
+    ],
+    "includePlatforms": [],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false,
+    "overrideReferences": false,
+    "precompiledReferences": [],
+    "autoReferenced": true,
+    "defineConstraints": [],
+    "versionDefines": [],
+    "noEngineReferences": false
 }

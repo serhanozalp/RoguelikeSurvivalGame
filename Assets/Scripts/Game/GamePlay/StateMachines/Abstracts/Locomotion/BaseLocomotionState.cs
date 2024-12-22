@@ -1,16 +1,20 @@
-public abstract class BaseLocomotionState<T> : BaseState<T> where T : class
+public abstract class BaseLocomotionState : BaseState
 {
     protected float _moveSpeed;
+    protected BaseEntityMovement _entityMovement;
 
-    protected BaseLocomotionState(BaseState<T> parentState, T contextData) : base(parentState, contextData)
+    protected BaseLocomotionState(BaseState parentState, BaseEntityMovement entitiyMovement) : base(parentState)
     {
+        _entityMovement = entitiyMovement;
     }
 
     public override void Enter()
     {
-        base.Enter();
         SetMovementSpeed();
     }
 
-    protected abstract void SetMovementSpeed();
+    private void SetMovementSpeed()
+    {
+        _entityMovement.MoveSpeed = _moveSpeed;
+    }
 }

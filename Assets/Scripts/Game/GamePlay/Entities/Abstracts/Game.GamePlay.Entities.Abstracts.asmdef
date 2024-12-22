@@ -1,0 +1,16 @@
+{
+    "name": "Game.GamePlay.Entities.Abstracts",
+    "rootNamespace": "",
+    "references": [
+        "GUID:41515517885c82d4d9a645304a2a69ab"
+    ],
+    "includePlatforms": [],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false,
+    "overrideReferences": false,
+    "precompiledReferences": [],
+    "autoReferenced": true,
+    "defineConstraints": [],
+    "versionDefines": [],
+    "noEngineReferences": false
+}

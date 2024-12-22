@@ -1,11 +1,9 @@
-public abstract class BaseState<T> where T : class
+public abstract class BaseState
 {
-    protected BaseState<T> _parentState;
-    protected T _contextData;
+    protected BaseState _parentState;
 
-    public BaseState(BaseState<T> parentState, T contextData)
+    public BaseState(BaseState parentState)
     {
-        _contextData = contextData;
         if (parentState == null)
         {
             _parentState = this;
@@ -14,14 +12,9 @@ public abstract class BaseState<T> where T : class
         else _parentState = parentState;
     }
 
-    public virtual void Enter()
-    {
-        HandleAnimations();
-    }
+    public virtual void Enter() { }
 
     public virtual void OnUpdate() { }
 
     public virtual  void Exit() { }
-
-    protected virtual void HandleAnimations() { }
 }

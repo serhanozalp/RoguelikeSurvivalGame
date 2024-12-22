@@ -1,12 +1,14 @@
-public abstract class BaseStateMachine<T> : BaseState<T> where T : class
+public abstract class BaseStateMachine<T> : BaseState where T : class
 {
-    protected BaseState<T> _currentState;
+    protected BaseState _currentState;
+    protected T _contextData;
 
-    protected BaseStateMachine(BaseState<T> parentState, T contextData) : base(parentState, contextData)
+    protected BaseStateMachine(BaseState parentState, T contextData) : base(parentState)
     {
+        _contextData = contextData;
     }
 
-    protected void ChangeState(BaseState<T> baseState)
+    protected void ChangeState(BaseState baseState)
     {
         if (_currentState == baseState) return;
         _currentState?.Exit();
