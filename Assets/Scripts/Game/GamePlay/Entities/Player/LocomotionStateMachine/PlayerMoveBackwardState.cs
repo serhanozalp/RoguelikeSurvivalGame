@@ -1,7 +1,7 @@
 public class PlayerMoveBackwardState : BaseLocomotionState
 {
-    public PlayerMoveBackwardState(BaseState parentState, BaseEntityMovement entitiyMovement) : base(parentState, entitiyMovement)
+    public PlayerMoveBackwardState(BaseStateMachine parentStateMachine) : base(parentStateMachine)
     {
-        _moveSpeed = GameConstants.Player.MOVE_BACKWARD_SPEED;
+        _moveSpeed = GameConstants.Player.Movement.MOVE_BACKWARD_SPEED;
     }
 }

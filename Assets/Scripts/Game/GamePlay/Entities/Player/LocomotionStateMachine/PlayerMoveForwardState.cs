@@ -1,7 +1,7 @@
 public class PlayerMoveForwardState : BaseLocomotionState
 {
-    public PlayerMoveForwardState(BaseState parentState, BaseEntityMovement entitiyMovement) : base(parentState, entitiyMovement)
+    public PlayerMoveForwardState(BaseStateMachine parentStateMachine) : base(parentStateMachine)
     {
-        _moveSpeed = GameConstants.Player.MOVE_FORWARD_SPEED;
+        _moveSpeed = GameConstants.Player.Movement.MOVE_FORWARD_SPEED;
     }
 }

@@ -1,58 +1,29 @@
-using UnityEngine;
+using Zenject;
 
-public class PlayerLocomotionContextData
+public class PlayerLocomotionStateMachine : BaseStateMachine
 {
-    public BaseEntityAnimation PlayerAnimation;
-    public BaseEntityMovement PlayerMovement;
-    public Transform PlayerTransform;
-}
+    private BaseState _playerIdleState;
+    private BaseState _playerStrafeState;
+    private BaseState _playerMoveForwardSate;
+    private BaseState _playerMoveBackwardState;
 
-public class PlayerLocomotionStateMachine : BaseStateMachine<PlayerLocomotionContextData>
-{
-    private BaseState _idleState;
-    private BaseState _strafeState;
-    private BaseState _moveForwardState;
-    private BaseState _moveBackwardState;
-
-    private Vector2 _locomotionBlendTreePoint;
-
-    public PlayerLocomotionStateMachine(BaseState parentState, PlayerLocomotionContextData contextData) : base(parentState, contextData)
+    [Inject]
+    private void ZenjectConstructor(DiContainer container)
     {
-        _idleState = new PlayerIdleState(this);
-        _strafeState = new PlayerStrafeState(this, _contextData.PlayerMovement);
-        _moveForwardState = new PlayerMoveForwardState(this, _contextData.PlayerMovement);
-        _moveBackwardState = new PlayerMoveBackwardState(this, _contextData.PlayerMovement);
-        ChangeState(_idleState);
+        container.QueueForInject(_playerStrafeState);
+        container.QueueForInject(_playerMoveForwardSate);
+        container.QueueForInject(_playerMoveBackwardState);
     }
 
-    public override void OnUpdate()
+    public PlayerLocomotionStateMachine(BaseStateMachine parentStateMachine = null) : base(parentStateMachine)
     {
-        HandleAnimations();
-        base.OnUpdate();
-    }
-
-    private void HandleAnimations()
-    {
-        _locomotionBlendTreePoint = new Vector2(Vector3.Dot(_contextData.PlayerTransform.right, _contextData.PlayerMovement.MoveDirection), Vector3.Dot(_contextData.PlayerTransform.forward, _contextData.PlayerMovement.MoveDirection));
-        (_contextData.PlayerAnimation as PlayerAnimation).SetLocomotionAnimationValues(_locomotionBlendTreePoint.x, _locomotionBlendTreePoint.y);
-    }
-
-    protected override void StateTransitionLogic()
-    {
-        switch (Vector2.Angle(_locomotionBlendTreePoint, Vector2.up))
-        {
-            case float angle when (angle == 0f):
-                ChangeState(_idleState);
-                break;
-            case float angle when (angle <= 45f && angle > 0f):
-                ChangeState(_moveForwardState);
-                break;
-            case float angle when (angle >= 135f):
-                ChangeState(_moveBackwardState);
-                break;
-            case float angle when (angle > 45f && angle < 135f):
-                ChangeState(_strafeState);
-                break;
-        }
+        _playerIdleState = new PlayerIdleState(this);
+        _playerStrafeState = new PlayerStrafeState(this);
+        _playerMoveBackwardState = new PlayerMoveBackwardState(this);
+        _playerMoveForwardSate = new PlayerMoveForwardState(this);
+        AddState(_playerIdleState as PlayerIdleState);
+        AddState(_playerStrafeState as PlayerStrafeState);
+        AddState(_playerMoveForwardSate as PlayerMoveForwardState);
+        AddState(_playerMoveBackwardState as PlayerMoveBackwardState);
     }
 }

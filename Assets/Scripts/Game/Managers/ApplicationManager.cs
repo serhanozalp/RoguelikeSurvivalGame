@@ -9,7 +9,7 @@ public class ApplicationManager : MonoBehaviourPersistentSingleton<ApplicationMa
     {
         base.Awake();
         EditorApplication.playModeStateChanged += EditorApplication_playModeStateChanged;
-        Application.targetFrameRate = 144;
+        //Application.targetFrameRate = 144;
         //Test
         SceneManager.LoadScene(1);
     }

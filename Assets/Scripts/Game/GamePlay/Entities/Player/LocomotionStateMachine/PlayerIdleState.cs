@@ -1,6 +1,6 @@
 public class PlayerIdleState : BaseState
 {
-    public PlayerIdleState(BaseState parentState) : base(parentState)
+    public PlayerIdleState(BaseStateMachine parentStateMachine) : base(parentStateMachine)
     {
     }
 }

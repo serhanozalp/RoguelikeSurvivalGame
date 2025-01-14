@@ -1,0 +1,23 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fb8b107afcb83054eb357ae49b007d74, type: 3}
+  m_Name: RifleBulletConfiguration
+  m_EditorClassIdentifier: 
+  Damage: 2
+  Speed: 100
+  MaxLifetime: 5
+  TrailRendererConfiguration: {fileID: 11400000, guid: 2bd94b0790d58f945a61e918ecce78b1,
+    type: 2}
+  MeshRendererConfiguration: {fileID: 0}
+  WeaponProjectileStrategies:
+  - {fileID: 11400000, guid: 23c5a96a5a05e72488e176a9285cfad3, type: 2}
+  - {fileID: 11400000, guid: 8a0442e92fd22c94dab3cec147db968d, type: 2}

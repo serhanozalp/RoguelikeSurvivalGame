@@ -1,7 +1,7 @@
 public class PlayerStrafeState : BaseLocomotionState
 {
-    public PlayerStrafeState(BaseState parentState, BaseEntityMovement entitiyMovement) : base(parentState, entitiyMovement)
+    public PlayerStrafeState(BaseStateMachine parentStateMachine) : base(parentStateMachine)
     {
-        _moveSpeed = GameConstants.Player.STRAFE_SPEED;
+        _moveSpeed = GameConstants.Player.Movement.STRAFE_SPEED;
     }
 }
