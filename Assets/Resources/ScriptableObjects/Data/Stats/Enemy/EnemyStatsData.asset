@@ -1,0 +1,56 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 26721a7b6480d8044b391ab62b365867, type: 3}
+  m_Name: EnemyStatsData
+  m_EditorClassIdentifier: 
+  ForwardSpeed:
+    Name: ForwardSpeed
+    Value: 5
+    ModifierType:
+      _assemblyQualifiedName: SpeedModifier, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
+        PublicKeyToken=null
+  BackwardSpeed:
+    Name: BackwardSpeed
+    Value: 2
+    ModifierType:
+      _assemblyQualifiedName: SpeedModifier, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
+        PublicKeyToken=null
+  StrafeSpeed:
+    Name: StrafeSpeed
+    Value: 3
+    ModifierType:
+      _assemblyQualifiedName: SpeedModifier, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
+        PublicKeyToken=null
+  Armor:
+    Name: Armor
+    Value: 100
+    ModifierType:
+      _assemblyQualifiedName: ArmorModifier, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
+        PublicKeyToken=null
+  AttackRate:
+    Name: AttackRate
+    Value: 2.5
+    ModifierType:
+      _assemblyQualifiedName: AttackRateModifier, Assembly-CSharp, Version=0.0.0.0,
+        Culture=neutral, PublicKeyToken=null
+  AttackRange:
+    Name: AttackRange
+    Value: 2
+    ModifierType:
+      _assemblyQualifiedName: AttackRangeModifier, Assembly-CSharp, Version=0.0.0.0,
+        Culture=neutral, PublicKeyToken=null
+  SensorRange:
+    Name: SensorRange
+    Value: 10
+    ModifierType:
+      _assemblyQualifiedName: SensorRangeModifier, Assembly-CSharp, Version=0.0.0.0,
+        Culture=neutral, PublicKeyToken=null

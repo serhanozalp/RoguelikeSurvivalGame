@@ -1,6 +1,6 @@
 using UnityEngine;
+using Zenject;
 
-[RequireComponent(typeof(PlayerInput))]
 public class PlayerRotation : MonoBehaviour
 {
     private Camera _mainCamera;
@@ -8,9 +8,14 @@ public class PlayerRotation : MonoBehaviour
 
     private float _rotateSpeed = 5f;
 
+    [Inject]
+    private void ZenjectConstructor(PlayerInput playerInput)
+    {
+        _playerInput = playerInput;
+    }
+
     private void Awake()
     {
-        _playerInput = GetComponent<PlayerInput>();
         _mainCamera = Camera.main;
     }
 

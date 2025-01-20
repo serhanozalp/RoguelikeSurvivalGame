@@ -4,12 +4,14 @@ using UnityEngine;
 [CreateAssetMenu(fileName = "SingleHitDamageStrategy", menuName = "WeaponSystem/Projectile Strategies/SingleHitDamageStrategy")]
 public class SingleHitDamageStrategy : BaseWeaponProjectileStrategy
 {
+    [SerializeField] private LayerMask _layerMask;
     private RaycastHit _hitInfo;
     private bool _isHandlingImpact;
+    
     public override void FixedUpdateHook()
     {
         if (_isHandlingImpact) return;
-        if(Physics.Raycast(_parentProjectile.transform.position, _parentProjectile.transform.forward, out _hitInfo, _parentProjectile.WeaponProjectileConfiguration.Speed * Time.fixedDeltaTime))
+        if(Physics.Raycast(_parentProjectile.transform.position, _parentProjectile.transform.forward, out _hitInfo, _parentProjectile.WeaponProjectileConfiguration.Speed * Time.fixedDeltaTime, _layerMask))
         {
             ImpactSequenceAsync().Forget();
         }
@@ -38,6 +40,6 @@ public class SingleHitDamageStrategy : BaseWeaponProjectileStrategy
     private void Impact()
     {
         _parentProjectile.transform.position = _hitInfo.point;
-        if (_hitInfo.collider.TryGetComponent<IDamagable>(out IDamagable damagable)) damagable.ApplyDamage(_parentProjectile.WeaponProjectileConfiguration.Damage);
+        if (_hitInfo.collider.TryGetComponent<IDamageable>(out IDamageable damagable)) damagable.ApplyDamage(_parentProjectile.WeaponProjectileConfiguration.Damage);
     }
 }

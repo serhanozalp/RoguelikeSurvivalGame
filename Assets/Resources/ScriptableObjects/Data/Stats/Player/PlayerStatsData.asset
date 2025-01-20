@@ -12,15 +12,33 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b505f9bbddb0c0441bafc56e44a5b2aa, type: 3}
   m_Name: PlayerStatsData
   m_EditorClassIdentifier: 
+  ForwardSpeed:
+    Name: ForwardSpeed
+    Value: 5
+    ModifierType:
+      _assemblyQualifiedName: SpeedModifier, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
+        PublicKeyToken=null
+  BackwardSpeed:
+    Name: BackwardSpeed
+    Value: 2
+    ModifierType:
+      _assemblyQualifiedName: SpeedModifier, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
+        PublicKeyToken=null
+  StrafeSpeed:
+    Name: StrafeSpeed
+    Value: 3
+    ModifierType:
+      _assemblyQualifiedName: SpeedModifier, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
+        PublicKeyToken=null
   Armor:
     Name: Armor
-    Value: 10
-    StatModifierType:
-      _assemblyQualifiedName: ArmorStatModifier, Game.GamePlay.Entities.EntitySystems,
-        Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
-  SpeedModifier:
-    Name: Speed Modifier
+    Value: 100
+    ModifierType:
+      _assemblyQualifiedName: ArmorModifier, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
+        PublicKeyToken=null
+  AttackRate:
+    Name: AttackRate
     Value: 1
-    StatModifierType:
-      _assemblyQualifiedName: SpeedStatModifier, Game.GamePlay.Entities.EntitySystems,
-        Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
+    ModifierType:
+      _assemblyQualifiedName: AttackRateModifier, Assembly-CSharp, Version=0.0.0.0,
+        Culture=neutral, PublicKeyToken=null

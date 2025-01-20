@@ -12,3 +12,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0862dd5072d507849bca4e200ba30db5, type: 3}
   m_Name: SingleHitDamageStrategy
   m_EditorClassIdentifier: 
+  _layerMask:
+    serializedVersion: 2
+    m_Bits: 247

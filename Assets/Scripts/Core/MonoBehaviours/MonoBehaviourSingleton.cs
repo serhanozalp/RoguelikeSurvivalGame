@@ -16,7 +16,7 @@ public abstract class MonoBehaviourSingleton<T> : MonoBehaviour where T : MonoBe
 #if UNITY_EDITOR
     private void Reset()
     {
-        if (FindObjectsOfType<T>().Length > 1)
+        if (FindObjectsByType<T>(FindObjectsSortMode.None).Length > 1)
         {
             Debug.LogWarning($"Destroying {typeof(T)}. It already exists in the scene.");
             EditorApplication.delayCall += () => DestroyImmediate(this);

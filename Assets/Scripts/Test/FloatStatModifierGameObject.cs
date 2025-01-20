@@ -1,19 +1,18 @@
 using System;
 using UnityEngine;
 
-[RequireComponent(typeof(Collider))]
 public class FloatStatModifierGameObject : MonoBehaviour, IPickup
 {
     [SerializeField]
     private float _value;
 
     [SerializeField]
-    private StatCalculationType _statCalculationType;
+    private CalculationType _statCalculationType;
 
     [SerializeField]
     private float _timerInitialValue;
 
-    [SerializeField, TypeFilter(typeof(BaseFloatStatModifier))]
+    [SerializeField, TypeFilter(typeof(BaseFloatModifier))]
     private SerializableType _floatStatModifierType;
 
     public void Pickup(IEntity entity)

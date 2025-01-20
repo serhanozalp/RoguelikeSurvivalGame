@@ -11,9 +11,9 @@ public abstract class BaseWeaponState : BaseState
     }
 
     [Inject]
-    protected void ZenjectConstructor(PlayerAnimation playerAnimation, PlayerWeaponManager playerWeaponManager, PlayerInput playerInput)
+    protected void ZenjectConstructor(BaseEntityAnimation playerAnimation, PlayerWeaponManager playerWeaponManager, PlayerInput playerInput)
     {
-        _playerAnimation = playerAnimation;
+        _playerAnimation = playerAnimation as PlayerAnimation;
         _playerWeaponManager = playerWeaponManager;
         _playerInput = playerInput;
     }

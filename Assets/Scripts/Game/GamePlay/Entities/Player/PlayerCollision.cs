@@ -1,18 +1,19 @@
 using UnityEngine;
+using Zenject;
 
-[RequireComponent(typeof(Collider), typeof(IEntity))]
 public class PlayerCollision : MonoBehaviour
 {
     private IEntity _playerEntity;
 
-    private void Awake()
+    [Inject]
+    private void ZenjectConstructor(IEntity playerEntity)
     {
-        _playerEntity = GetComponent<IEntity>();
+        _playerEntity = playerEntity;
     }
 
     private void OnTriggerEnter(Collider other)
     {
-        if(other.gameObject.TryGetComponent<IPickup>(out IPickup pickupObject))
+        if (other.gameObject.TryGetComponent<IPickup>(out IPickup pickupObject))
         {
             pickupObject.Pickup(_playerEntity);
         }
